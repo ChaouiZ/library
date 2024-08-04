@@ -1,0 +1,43 @@
+:root {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+
+
+body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+    border: solid black 1px;
+    border-collapse: collapse;
+}
+
+.table-wrapper {
+    height: 30vh;
+    width: 50vw;
+    position:absolute;
+    top: 10%;
+    background-color: white;
+}
+
+tr {
+    /* display:flex;
+    justify-content: space-around; */
+    border: solid black 2px;
+}
+
+th {
+    border: solid black 1px;
+}
+
+td {
+    border: solid black 1px;
+    text-align: center;
+}

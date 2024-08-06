@@ -44,7 +44,7 @@ function addBook() {
 function clearForm() {
     document.querySelector("#title-input").value = '';
     document.querySelector('#author-input').value = '';
-    document.querySelector('#pages-input').value = null;
+    document.querySelector('#pages-input').value = '';
     document.querySelector('#read-yes').checked = false;
     document.querySelector('#read-no').checked = false;
 

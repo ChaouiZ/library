@@ -10,21 +10,24 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+    
+    
 }
 
 table {
     width: 100%;
     border: solid black 1px;
     border-collapse: collapse;
+    justify-self: start;
 }
 
 .table-wrapper {
     height: 30vh;
     width: 50vw;
-    position:absolute;
-    top: 10%;
     background-color: white;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
 }
 
 tr {
@@ -40,4 +43,51 @@ th {
 td {
     border: solid black 1px;
     text-align: center;
+}
+
+.add-book-menu {
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+    justify-content: space-between;
+    padding: 3rem 2rem 1.5rem 2rem;
+    background-color: white;
+
+}
+
+.menu-opt {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio-div {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.radio-opt {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-book {
+    margin-bottom: 3rem;
+}
+
+.submit {
+
+    margin-top: 1.5rem;
+    align-self: center;
+    justify-self: center;
+}
+
+.book-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-input, label {
+    margin-top: .5rem;
 }

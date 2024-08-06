@@ -32,6 +32,40 @@
         </table>
     </div>
     <button class="new-book">New Book</button>
+    <div class="add-book-menu">
+        <div class="book-inputs">
+            
+            <div class="add-title menu-opt">
+                <label for="title-input" class="input-label">Title</label>
+                <input type="text" name="title-input" id="title-input" class="book-input">
+            </div>
+            <div class="add-author menu-opt">
+                <label for="author-input" class="input-label">Author</label>
+                <input type="text" name="author-input" id="author-input" class="book-input">
+            </div>
+            <div class="add-num-of-pages menu-opt">
+                <label for="pages-input" class="input-label">Number of Pages</label>
+                <input type="number" name="pages-input" id="pages-input" class="book-input">
+            </div>
+            <div class="add-read-status menu-opt">
+            
+                <legend>Have you read this book?</legend>
+                <div class="radio-div">
+                    
+                    <div class="radio-opt">
+                        <label for="read-yes" class="input-label">Yes</label>
+                        <input type="radio" name="read-check" id="read-yes" value="yes">
+                    </div>
+                    <div class="radio-opt">
+                        <label for="read-no" class="input-label">No</label>
+                        <input type="radio" name="read-check" id="read-no" value="no">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+            <button class="submit">Submit</button>
+        </div>
     <script src="script.js"></script>
 </body>
 

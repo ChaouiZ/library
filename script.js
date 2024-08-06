@@ -1,6 +1,4 @@
-
 const submit = document.querySelector('.submit');
-
 
 const myLibrary = [];
 
@@ -22,15 +20,25 @@ function Book(title, author, numOfPages, read) {
     };
 }
 
-
-let lOtr = new Book("Lord of the Rings", "J.R.R Tolkien", 290, true);
-
-
-submit.addEventListener('click', () => {
+function addBook() {
     const titleInput = document.querySelector("#title-input").value;
     const authorInput = document.querySelector('#author-input').value;
     const pagesInput = document.querySelector('#pages-input').value;
-    const book = new Book(titleInput, authorInput, pagesInput);
+    
+    let readCheck; 
+    const readYes = document.querySelector('#read-yes');
+    const readNo = document.querySelector('#read-no');
+    
+    if (readYes.checked) {
+        readCheck = true;
+    } else if (readNo.checked) {
+        readCheck = false;
+    }
+    
+    const book = new Book(titleInput, authorInput, pagesInput, readCheck);
+
     myLibrary.push(book);
     console.log(myLibrary);
-})
+}
+
+submit.addEventListener('click', addBook);

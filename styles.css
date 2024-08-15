@@ -28,6 +28,7 @@ table {
     background-color: white;
     margin-top: 6rem;
     margin-bottom: 3rem;
+    overflow-y: auto;
 }
 
 tr {
@@ -91,12 +92,13 @@ td {
 .book-input, label {
     margin-top: .5rem;
 }
-/* 
+
 .read-status {
-    display: flex;
-    justify-content: space-around;
-} */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 
 .toggle-btn {
     margin-left: .5rem;
+    grid-column: 2/3;    
 }

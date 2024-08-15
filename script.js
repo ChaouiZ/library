@@ -8,6 +8,15 @@ function Book(title, author, numOfPages, read) {
     this.numOfPages = numOfPages;
     this.read = read;
     
+    this.getReadStatus = function () {
+        let readStatus = "";
+        if (this.read === true) {
+            readStatus = "Read";
+        } else {
+            readStatus = "Unread";
+        }
+        return readStatus;
+    }
     this.info = function () {
         let readStatus = "";
         if (this.read === true) {
@@ -41,18 +50,54 @@ function addBook() {
     console.log(myLibrary);
 }
 
+function createTableDataEls(bookObjectArr) {
+    const table = document.querySelector('.book-table');
+    const tr = document.createElement('tr');
+
+    let tableElCount = table.childElementCount - 2;
+
+    tr.className = `row${tableElCount}`;
+
+    let td;
+    
+    for (i = 0; i <= 3; i++) {
+        td = document.createElement('td');
+        if (i === 0) {
+            td.className = `title${tableElCount}`;
+            td.innerHTML = bookObjectArr[tableElCount].title;
+        } else if (i === 1) {
+            td.className = `author${tableElCount}`;
+            td.innerHTML = bookObjectArr[tableElCount].author;
+        } else if (i === 2) {
+            td.className = `numpages${tableElCount}`;
+            td.innerHTML = bookObjectArr[tableElCount].numOfPages;
+        } else {
+            let toggleButton = document.createElement('button');
+            toggleButton.classList.add(`togglebutton${tableElCount}`, "toggle-btn");
+            toggleButton.innerHTML = "Toggle";
+            td.classList.add(`readstatus${tableElCount}`, "read-status");
+            td.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+            td.appendChild(toggleButton);
+        }
+        tr.appendChild(td);
+    }
+    
+    
+  
+    table.appendChild(tr);
+}
+
 function clearForm() {
     document.querySelector("#title-input").value = '';
     document.querySelector('#author-input').value = '';
     document.querySelector('#pages-input').value = '';
     document.querySelector('#read-yes').checked = false;
     document.querySelector('#read-no').checked = false;
-
-    
 }
 
 submit.addEventListener('click', () => {
     addBook();
     clearForm();
+    createTableDataEls(myLibrary);
 });
 

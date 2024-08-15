@@ -91,3 +91,12 @@ td {
 .book-input, label {
     margin-top: .5rem;
 }
+/* 
+.read-status {
+    display: flex;
+    justify-content: space-around;
+} */
+
+.toggle-btn {
+    margin-left: .5rem;
+}

@@ -53,8 +53,11 @@ td {
     justify-content: space-between;
     padding: 3rem 2rem 1.5rem 2rem;
     background-color: white;
+    flex-wrap: wrap;
+    flex: 1 1 0;
 
 }
+
 
 .menu-opt {
     display:flex;
@@ -87,6 +90,8 @@ td {
 .book-inputs {
     display: flex;
     justify-content: space-between;
+    flex-basis: 1;
+    flex-wrap: wrap;
 }
 
 .book-input, label {
@@ -96,6 +101,7 @@ td {
 .read-status {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    align-items: center;
 }
 
 .toggle-btn {

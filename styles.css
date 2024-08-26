@@ -53,9 +53,6 @@ td {
     justify-content: space-between;
     padding: 3rem 2rem 1.5rem 2rem;
     background-color: white;
-    flex-wrap: wrap;
-    flex: 1 1 0;
-
 }
 
 
@@ -107,4 +104,12 @@ td {
 .toggle-btn {
     margin-left: .5rem;
     grid-column: 2/3;    
+}
+
+.input-label {
+    margin-top: .75rem;
+}
+
+legend {
+    margin-top: .75rem;
 }

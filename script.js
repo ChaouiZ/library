@@ -60,7 +60,7 @@ function createTableDataEls(bookObjectArr) {
 
     let td;
     
-    for (i = 0; i <= 3; i++) {
+    for (i = 0; i <= 4; i++) {
         td = document.createElement('td');
         if (i === 0) {
             td.className = `title${tableElCount}`;
@@ -71,32 +71,45 @@ function createTableDataEls(bookObjectArr) {
         } else if (i === 2) {
             td.className = `numpages${tableElCount}`;
             td.innerHTML = bookObjectArr[tableElCount].numOfPages;
+        } else if (i === 3) {
+
+
+            td.classList.add(`readstatus${tableElCount}`, "read-status");
+            td.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+
+            
+            
         } else {
+            
+            td.className = `update${tableElCount}`;
+            // td.innerHTML = "Test";
+            
             let toggleButton = document.createElement('button');
+            
             toggleButton.classList.add(`togglebutton${tableElCount}`, "toggle-btn");
+            
+            td.appendChild(toggleButton);
+            toggleButton.addEventListener("click", () => {
+                const readStatusTemp = document.querySelector(`.readstatus${tableElCount}`);
+                    if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
+                            bookObjectArr[tableElCount].read = false;
+                            readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+                            toggleButton.innerHTML = "Mark Read";
+                            td.appendChild(toggleButton);
+                        } else {
+                                bookObjectArr[tableElCount].read = true;
+                                readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+                                toggleButton.innerHTML = "Mark Unread";
+                                td.appendChild(toggleButton);
+                            }
+                        })
+
+
             if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
                     toggleButton.innerHTML = "Mark Unread";
                 } else {
                     toggleButton.innerHTML = "Mark Read";
                 }
-    
-            td.classList.add(`readstatus${tableElCount}`, "read-status");
-            td.innerHTML = bookObjectArr[tableElCount].getReadStatus();
-            td.appendChild(toggleButton);
-
-            toggleButton.addEventListener("click", () => {
-                if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
-                    bookObjectArr[tableElCount].read = false;
-                    td.innerHTML = bookObjectArr[tableElCount].getReadStatus();
-                    toggleButton.innerHTML = "Mark Read";
-                    td.appendChild(toggleButton);
-                } else {
-                    bookObjectArr[tableElCount].read = true;
-                    td.innerHTML = bookObjectArr[tableElCount].getReadStatus();
-                    toggleButton.innerHTML = "Mark Unread";
-                    td.appendChild(toggleButton);
-                }
-            })
         }
         tr.appendChild(td);
     }

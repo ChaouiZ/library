@@ -85,10 +85,15 @@ function createTableDataEls(bookObjectArr) {
             // td.innerHTML = "Test";
             
             let toggleButton = document.createElement('button');
+            let deleteButton = document.createElement('button');
+
+            deleteButton.classList.add(`deletebutton${tableElCount}`, 'delete-btn');
+            deleteButton.innerHTML = "Delete";
             
             toggleButton.classList.add(`togglebutton${tableElCount}`, "toggle-btn");
             
             td.appendChild(toggleButton);
+            td.appendChild(deleteButton);
             toggleButton.addEventListener("click", () => {
                 const readStatusTemp = document.querySelector(`.readstatus${tableElCount}`);
                     if(bookObjectArr[tableElCount].getReadStatus() === "Read") {

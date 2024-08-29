@@ -95,16 +95,16 @@ td {
     margin-top: .5rem;
 }
 
-.read-status {
+/* .read-status {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-}
+} */
 
-.toggle-btn {
+/* .toggle-btn {
     margin-left: .5rem;
     grid-column: 2/3;    
-}
+} */
 
 .input-label {
     margin-top: .75rem;

@@ -81,7 +81,7 @@ function createTableDataEls(bookObjectArr) {
             
         } else {
             
-            td.className = `update${tableElCount}`;
+            td.classList.add(`update${tableElCount}`, "update-td");
             // td.innerHTML = "Test";
             
             let toggleButton = document.createElement('button');
@@ -94,18 +94,21 @@ function createTableDataEls(bookObjectArr) {
             
             td.appendChild(toggleButton);
             td.appendChild(deleteButton);
+            
             toggleButton.addEventListener("click", () => {
                 const readStatusTemp = document.querySelector(`.readstatus${tableElCount}`);
-                    if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
-                            bookObjectArr[tableElCount].read = false;
-                            readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
-                            toggleButton.innerHTML = "Mark Read";
-                            td.appendChild(toggleButton);
-                        } else {
-                                bookObjectArr[tableElCount].read = true;
-                                readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
-                                toggleButton.innerHTML = "Mark Unread";
-                                td.appendChild(toggleButton);
+                if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
+                    bookObjectArr[tableElCount].read = false;
+                    readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+                    toggleButton.innerHTML = "Mark Read";
+                    td.appendChild(toggleButton);
+                    td.appendChild(deleteButton);
+                } else {
+                    bookObjectArr[tableElCount].read = true;
+                    readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+                    toggleButton.innerHTML = "Mark Unread";
+                    td.appendChild(toggleButton);
+                    td.appendChild(deleteButton);
                             }
                         })
 

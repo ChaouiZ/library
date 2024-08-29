@@ -113,3 +113,10 @@ td {
 legend {
     margin-top: .75rem;
 }
+
+.update-td {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

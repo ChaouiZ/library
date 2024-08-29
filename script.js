@@ -1,6 +1,7 @@
 const submit = document.querySelector('.submit');
 
 const myLibrary = [];
+const tableRows = [];
 
 function Book(title, author, numOfPages, read) {
     this.title = title;
@@ -50,81 +51,189 @@ function addBook() {
     console.log(myLibrary);
 }
 
-function createTableDataEls(bookObjectArr) {
-    const table = document.querySelector('.book-table');
-    const tr = document.createElement('tr');
-
-    let tableElCount = table.childElementCount - 2;
-
-    tr.className = `row${tableElCount}`;
-
-    let td;
+function updateTrAndTdNumbers() {
     
-    for (i = 0; i <= 4; i++) {
-        td = document.createElement('td');
-        if (i === 0) {
-            td.className = `title${tableElCount}`;
-            td.innerHTML = bookObjectArr[tableElCount].title;
-        } else if (i === 1) {
-            td.className = `author${tableElCount}`;
-            td.innerHTML = bookObjectArr[tableElCount].author;
-        } else if (i === 2) {
-            td.className = `numpages${tableElCount}`;
-            td.innerHTML = bookObjectArr[tableElCount].numOfPages;
-        } else if (i === 3) {
+}
+
+// function createTableDataEls(bookObjectArr) {
+//     const table = document.querySelector('.book-table');
+//     const tr = document.createElement('tr');
+
+//     let tableElCount = table.childElementCount - 2;
+
+//     tr.className = `row${tableElCount}`;
+
+//     let td;
+    
+//     for (i = 0; i <= 4; i++) {
+//         td = document.createElement('td');
+//         if (i === 0) {
+//             td.className = `title${tableElCount}`;
+//             td.innerHTML = bookObjectArr[tableElCount].title;
+//         } else if (i === 1) {
+//             td.className = `author${tableElCount}`;
+//             td.innerHTML = bookObjectArr[tableElCount].author;
+//         } else if (i === 2) {
+//             td.className = `numpages${tableElCount}`;
+//             td.innerHTML = bookObjectArr[tableElCount].numOfPages;
+//         } else if (i === 3) {
 
 
-            td.classList.add(`readstatus${tableElCount}`, "read-status");
-            td.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+//             td.classList.add(`readstatus${tableElCount}`, "read-status");
+//             td.innerHTML = bookObjectArr[tableElCount].getReadStatus();
 
             
             
-        } else {
+//         } else {
             
-            td.classList.add(`update${tableElCount}`, "update-td");
-            // td.innerHTML = "Test";
+//             td.classList.add(`update${tableElCount}`, "update-td");
+//             // td.innerHTML = "Test";
             
-            let toggleButton = document.createElement('button');
-            let deleteButton = document.createElement('button');
+//             let toggleButton = document.createElement('button');
+//             let deleteButton = document.createElement('button');
 
-            deleteButton.classList.add(`deletebutton${tableElCount}`, 'delete-btn');
-            deleteButton.innerHTML = "Delete";
+//             deleteButton.classList.add(`deletebutton${tableElCount}`, 'delete-btn');
+//             toggleButton.classList.add(`togglebutton${tableElCount}`, "toggle-btn");
+//             deleteButton.innerHTML = "Delete";
             
-            toggleButton.classList.add(`togglebutton${tableElCount}`, "toggle-btn");
             
-            td.appendChild(toggleButton);
-            td.appendChild(deleteButton);
-            
-            toggleButton.addEventListener("click", () => {
-                const readStatusTemp = document.querySelector(`.readstatus${tableElCount}`);
-                if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
-                    bookObjectArr[tableElCount].read = false;
-                    readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
-                    toggleButton.innerHTML = "Mark Read";
-                    td.appendChild(toggleButton);
-                    td.appendChild(deleteButton);
-                } else {
-                    bookObjectArr[tableElCount].read = true;
-                    readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
-                    toggleButton.innerHTML = "Mark Unread";
-                    td.appendChild(toggleButton);
-                    td.appendChild(deleteButton);
-                            }
-                        })
+//             td.appendChild(toggleButton);
+//             td.appendChild(deleteButton);
+
+//             toggleButton.addEventListener("click", () => {
+//                 const readStatusTemp = document.querySelector(`.readstatus${tableElCount}`);
+//                 if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
+//                     bookObjectArr[tableElCount].read = false;
+//                     readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+//                     toggleButton.innerHTML = "Mark Read";
+//                     td.appendChild(toggleButton);
+//                     td.appendChild(deleteButton);
+//                 } else {
+//                     bookObjectArr[tableElCount].read = true;
+//                     readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+//                     toggleButton.innerHTML = "Mark Unread";
+//                     td.appendChild(toggleButton);
+//                     td.appendChild(deleteButton);
+//                             }
+//                         })
+
+//                         deleteButton.addEventListener("click", () => {
+//                             if(confirm(`Are you sure that you would like to delete "${bookObjectArr[tableElCount].title}"?`)) {
+//                                 tr.remove();
+//                                 myLibrary.splice(tableElCount, 1);
+//                                 console.log(myLibrary);
+//                             }
+//                             console.log("No");
+//                         })
 
 
-            if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
-                    toggleButton.innerHTML = "Mark Unread";
-                } else {
-                    toggleButton.innerHTML = "Mark Read";
-                }
-        }
-        tr.appendChild(td);
-    }
+//             if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
+//                     toggleButton.innerHTML = "Mark Unread";
+//                 } else {
+//                     toggleButton.innerHTML = "Mark Read";
+//                 }
+//         }
+//         tr.appendChild(td);
+//     }
     
     
   
+//     table.appendChild(tr);
+// }
+
+
+function assignUpdateButtonEventListeners(toggleBtn, deletBtn, tr, tableElCount, bookObjectArr) {
+
+    toggleBtn.addEventListener("click", () => {
+        const readStatusTemp = document.querySelector(`.readstatus${tableElCount}`);
+                if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
+                    bookObjectArr[tableElCount].read = false;
+                    readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+                    toggleBtn.innerHTML = "Mark Read";
+                    updateTd.appendChild(toggleBtn);
+                    updateTd.appendChild(deletBtn);
+                } else {
+                    bookObjectArr[tableElCount].read = true;
+                    readStatusTemp.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+                    toggleBtn.innerHTML = "Mark Unread";
+                    updateTd.appendChild(toggleBtn);
+                    updateTd.appendChild(deletBtn);
+                            }
+    })
+
+    deletBtn.addEventListener("click", () => {
+        if(confirm(`Are you sure that you would like to delete "${bookObjectArr[tableElCount].title}"?`)) {
+                                tr.remove();
+                                myLibrary.splice(tableElCount, 1);
+                                console.log(myLibrary);
+                            }
+                            console.log("No");
+    })
+}
+
+function createTableData(bookObjectArr) {
+
+    const table = document.querySelector('.book-table');
+    const tr = document.createElement('tr');
+
+    tableRows.push(tr);
+
+    for (const [index, row] of tableRows.entries()) {
+
+        row.className = `row${index}`;
+    }
+
+    let tableElCount = table.childElementCount - 2;
+
+
+    {titleTd = document.createElement('td');
+    titleTd.className = `title${tableElCount}`;
+    titleTd.innerHTML = bookObjectArr[tableElCount].title;
+
+    authorTd = document.createElement('td');
+    authorTd.className = `author${tableElCount}`;
+    authorTd.innerHTML = bookObjectArr[tableElCount].author;
+
+    pageNumsTd = document.createElement('td');
+    pageNumsTd.className = `numpages${tableElCount}`;
+    pageNumsTd.innerHTML = bookObjectArr[tableElCount].numOfPages;
+    
+    readStatusTd = document.createElement('td');
+    readStatusTd.classList.add(`readstatus${tableElCount}`, "read-status");
+    readStatusTd.innerHTML = bookObjectArr[tableElCount].getReadStatus();
+    
+    updateTd = document.createElement('td');
+    updateTd.classList.add(`update${tableElCount}`, "update-td");
+
+    let toggleButton = document.createElement('button');
+    let deleteButton = document.createElement('button');
+
+    deleteButton.classList.add(`deletebutton${tableElCount}`, 'delete-btn');
+    toggleButton.classList.add(`togglebutton${tableElCount}`, "toggle-btn");
+    deleteButton.innerHTML = "Delete";
+            
+            
+    updateTd.appendChild(toggleButton);
+    updateTd.appendChild(deleteButton);
+
+    if(bookObjectArr[tableElCount].getReadStatus() === "Read") {
+        toggleButton.innerHTML = "Mark Unread";
+     } else {
+        toggleButton.innerHTML = "Mark Read";
+    }
+
+    assignUpdateButtonEventListeners(toggleButton, deleteButton, tr, tableElCount, bookObjectArr);
+
+    tr.appendChild(titleTd);
+    tr.appendChild(authorTd);
+    tr.appendChild(pageNumsTd);
+    tr.appendChild(readStatusTd);
+    tr.appendChild(updateTd);
+
     table.appendChild(tr);
+}
+
+
 }
 
 function clearForm() {
@@ -138,6 +247,6 @@ function clearForm() {
 submit.addEventListener('click', () => {
     addBook();
     clearForm();
-    createTableDataEls(myLibrary);
+    createTableData(myLibrary);
 });
 
